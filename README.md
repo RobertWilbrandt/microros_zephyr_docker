@@ -17,6 +17,10 @@ $ docker build microros_zephyr_docker \
     --build-arg PLATFORM_BOARD=<Your Board>
 ```
 
+The ```PLATFORM_BOARD``` argument specifies which board you are using. The format it uses depends on:
+- If your board is already supported by *micro-ROS*, use the name shown in the [micro_ros_setup](https://github.com/micro-ROS/micro_ros_setup) supported platforms section.
+- If your board is not yet supported by *micro-ROS* (but supported by *Zephyr*) and you just want to try out this configuration, use the name used by *Zephyr* (as found in its board side in the [documentation](https://docs.zephyrproject.org/latest/boards/index.html)). This will give you warnings during your build.
+
 Running the image
 -----------------
 
