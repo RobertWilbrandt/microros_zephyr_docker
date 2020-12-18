@@ -11,10 +11,10 @@ Building the image
 You can build the image using
 
 ```console
-git clone git@github.com:RobertWilbrandt/microros_zephyr_docker.git
-docker build microros_zephyr_docker \
-  --tag wilbrandt/microros_zephyr:foxy \
-  --build-arg PLATFORM_BOARD=<Your Board>
+$ git clone git@github.com:RobertWilbrandt/microros_zephyr_docker.git
+$ docker build microros_zephyr_docker \
+    --tag wilbrandt/microros_zephyr:foxy \
+    --build-arg PLATFORM_BOARD=<Your Board>
 ```
 
 Running the image
@@ -23,9 +23,9 @@ Running the image
 You can use this image just like any other docker image. Recommended usage is
 
 ```console
-docker run -it --rm --privileged \
-  --volume <absolute_path_to_your_apps_folder>:/uros_apps \
-  wilbrandt/microros_zephyr:foxy
+$ docker run -it --rm --privileged \
+    --volume <absolute_path_to_your_apps_folder>:/uros_apps \
+    wilbrandt/microros_zephyr:foxy
 ```
 
 The effects of these flags are:
