@@ -14,3 +14,9 @@ RUN . install/setup.sh \
       python3-dev python3-pip python3-setuptools python3-tk python3-wheel xz-utils file \
       make gcc gcc-multilib g++-multilib libsdl2-dev \
  && ros2 run micro_ros_setup create_firmware_ws.sh zephyr $PLATFORM_BOARD
+
+ENV UROS_CUSTOM_APP_FOLDER=/uros_apps
+
+COPY ./microros_zephyr_entrypoint.sh /microros_zephyr_entrypoint.sh
+ENTRYPOINT ["/microros_zephyr_entrypoint.sh"]
+CMD ["bash"]
