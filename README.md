@@ -61,9 +61,9 @@ $ docker run -it --rm --privileged --volume $(pwd)/zephyr_apps/apps:/uros_apps \
 Inside this image you can now configure, build and flash the application. The example board is connected using a serial transport (piped through the on-board debugger connected via USB) and the *Zephyr* board page tells us we want to use ```UART1```.
 
 ```console
-$ ros2 run micro_ros_setup configure_firmware.sh ping_pong --transport serial --dev 1
-$ ros2 run micro_ros_setup build_firmware.sh -f
-$ ros2 run micro_ros_setup flash_firmware.sh
+# ros2 run micro_ros_setup configure_firmware.sh ping_pong --transport serial --dev 1
+# ros2 run micro_ros_setup build_firmware.sh -f
+# ros2 run micro_ros_setup flash_firmware.sh
 ```
 
 You have now flashed your *micro-ROS* image to your board! When developing, you might want to keep this docker image open (to prevent having to fully rebuild every time).
