@@ -6,6 +6,8 @@ echo "| microros_zehyr_docker |"
 echo "-------------------------"
 echo ""
 
+echo "Platform: zephyr $(head -n2 firmware/PLATFORM | tail -n1)"
+
 pushd /uros_apps >/dev/null
 
 # Check if apps were mounted correctly
