@@ -47,7 +47,7 @@ The first step to achieve this consists of getting the application and building 
 ```console
 $ git clone git@github.com:micro-ROS/zephyr_apps.git
 $ git clone git@github.com:RobertWilbrandt/microros_zephyr_docker.git
-$ docker build microros_zephyr_docker --tag wilbrandt/microros_zephyr:foxy \
+$ docker build microros_zephyr_docker --tag wilbrandt/microros_zephyr_stm32f429i_disc1:foxy \
     --build-arg PLATFORM_BOARD=stm32f429i_disc1
 ```
 
@@ -55,7 +55,7 @@ This will take a while, as a full ROS foxy image with a complete *micro-ROS* and
 
 ```console
 $ docker run -it --rm --privileged --volume $(pwd)/zephyr_apps/apps:/uros_apps \
-    wilbrandt/microros_zephyr:foxy
+    wilbrandt/microros_zephyr_stm32f429i_disc1:foxy
 ```
 
 Inside this image you can now configure, build and flash the application. The example board is connected using a serial transport (piped through the on-board debugger connected via USB) and the *Zephyr* board page tells us we want to use ```UART1```.
