@@ -36,7 +36,7 @@ The effects of these flags are:
 - ```-it```: Keeps ```STDIN``` open and creates a pseudo-TTY for you to interact with. With these two options you can use this like a normal shell.
 - ```--rm```: Removes the container after it exits. You might not want to use this if you want to keep an internal state in the image and attach to it later on.
 - ```--privileged```: This is needed to give the container all permissions needed to flash your microcontroller.
-- ```--volume```: Maps your custom apps into the image. This has to be an absoulte path, and it should contain the directories of your custom apps.
+- ```--volume```: Maps your custom apps into the image. This has to be an absoulte path, and it should contain the directories of your custom apps. The toolchain inside the image expects your apps to be mapped to ```/uros_apps``` and will error out if it doesn't find any there.
 
 Example Application
 -------------------
