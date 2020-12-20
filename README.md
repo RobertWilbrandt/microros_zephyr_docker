@@ -5,6 +5,8 @@ This package supplies a docker image with everything needed to start using [micr
 
 ![Example of usage: Building this docker image, building an example application in it and running it](doc/usage_sample.gif)
 
+This docker image contains a full toolchain to build and flash a *micro-ROS* application to a microcontroller (or to run it in host emulation). Combine this with the ```micro-ros-agent``` image from [micro-ROS docker](https://github.com/micro-ROS/docker) to get a fully functional *micro-ROS* workbench.
+
 **Disclaimer**: This package is still under construction and not yet ready for any serious use.
 
 Table of Contents
