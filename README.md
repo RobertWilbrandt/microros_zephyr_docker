@@ -51,6 +51,8 @@ $ docker build microros_zephyr_docker --tag wilbrandt/microros_zephyr_stm32f429i
     --build-arg PLATFORM_BOARD=stm32f429i_disc1
 ```
 
+(Okay i am cheating a bit here, as the *micro-ROS* applications in ```zephyr_apps``` will check if the board is supported, which is not the case for ```stm32f429i_disc1```. You can just comment out the check in ```CMakeLists.txt``` though and i will try to get a patch in that removes this for basic applications)
+
 This will take a while, as a full ROS foxy image with a complete *micro-ROS* and *Zephyr* installation needs to be installed. When this is done, you can run the image like this:
 
 ```console
