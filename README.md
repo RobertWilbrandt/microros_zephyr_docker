@@ -38,8 +38,10 @@ The effects of these flags are:
 - ```--privileged```: This is needed to give the container all permissions needed to flash your microcontroller.
 - ```--volume```: Maps your custom apps into the image. This has to be an absoulte path, and it should contain the directories of your custom apps. The toolchain inside the image expects your apps to be mapped to ```/uros_apps``` and will error out if it doesn't find any there.
 
-Example Application
--------------------
+Example Applications
+--------------------
+
+### Serial communication with real board
 
 Suppose you want to build one of the example applications distributed in [zephyr_apps](https://github.com/micro-ROS/zephyr_apps) as part of *micro-ROS*, for example *ping_pong*. You use the [STM32F429I-DISC1 discovery kit](https://docs.zephyrproject.org/latest/boards/arm/stm32f429i_disc1/doc/index.html).
 
@@ -92,3 +94,44 @@ $ ros2 topic pub -1 /microROS/ping std_msgs/msg/Header "frame_id: 'Hello World!'
 ```
 
 You should now see your message in the first shell.
+
+### UDP-based communication with host emulation
+
+Zephyr also allows you to build an application right on your computer, emulating some of the driver interfaces seamlessly (even complex peripherals like displays, network stacks and BLE). If you don't have access to a microcontroller board right now but still want to take a look at *micro-ROS*, i encourage getting started using this. It can also be incredibly useful for prototyping and debugging embedded applications. More information on this can be found in the [Zephyr documentation](https://docs.zephyrproject.org/latest/boards/posix/native_posix/doc/index.html).
+
+Using this host emulation is nearly identical to the above example. You start by cloning your application (in this case ```int32_publisher```) and building this docker image:
+
+```console
+$ git clone git@github.com:micro-ROS/zephyr_apps.git
+$ git clone git@github.com:RobertWilbrandt/microros_zephyr_docker.git
+$ docker build microros_zephyr_docker --tag wilbrandt/microros_zephyr_host:foxy \
+    --build-arg PLATFORM_BOARD=host
+```
+
+After this, start the container. Inside it, you can now configure and build an image. Note that we need to replace the ```--privileged``` flag with ```--net=host```, as we are now communicationg via network.
+
+```console
+$ docker run -it --rm --net=host --volume $(pwd)/zephyr_apps/apps:/uros_apps \
+    wilbrandt/microros_zephyr_stm32f429i_disc1:foxy
+# ros2 run micro_ros_setup configure_firmware.sh int32_publisher --transport udp --ip 127.0.0.1 --port 8888
+# ros2 run micro_ros_setup build_firmware.sh -f
+```
+
+Note that we did not yet start the application (using ```flash_firmware.sh```), as this will just error out when it doesn't find an agent running. We can (again) start an agent in a seperate container, also changing the ```--privileged``` with ```--net=host```:
+
+```console
+$ docker run -it --rm --net=host microros/micro-ros-agent:foxy udp4 --port 8888
+```
+
+Now go back to your first container and start the application:
+
+```console
+# ros2 run micro_ros_setup flash_firmware.sh
+```
+
+You should see some messages in the agent container. In a normal ros2 foxy machine, your can now check the functionality:
+
+```console
+$ source /opt/ros/foxy/setup.bash
+$ ros2 topic echo /zephyr_int32_publisher
+```
