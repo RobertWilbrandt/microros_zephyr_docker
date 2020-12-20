@@ -78,7 +78,7 @@ An easy way to connect to your MCU is to use the *micro-ROS* ```micro-ros-agent`
 $ docker run -it --rm --privileged microros/micro-ros-agent:foxy serial --dev /dev/ttyACM0
 ```
 
-Make sure to replace the ```/dev/ttyACM0``` with your actual device.
+Make sure to replace the ```/dev/ttyACM0``` with your actual device. You might need to reset your microcontroller, for most development boards out there this should be possible by just pressing a button. The agent should show some lines notifying you about a new connection.
 
 Now you should be ready to try out your demo: Open two shells and enter:
 ```console
