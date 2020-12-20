@@ -5,7 +5,16 @@ This package supplies a docker image with everything needed to start using [micr
 
 **Disclaimer**: This package is still under construction and not yet ready for any serious use.
 
-Building the image
+Table of Contents
+-----------------
+
+- [Building the Image](#building-the-image)
+- [Running the Image](#running-the-image)
+- [Example Applications](#example-applications)
+  - [Serial Communication with Microcontroller Board](#serial-communication-with-microcontroller-board)
+  - [UDP-based Communication with Host Emulation](#udp-based-communication-with-host-emulation)
+
+Building the Image
 ------------------
 
 You can build the image using
@@ -21,7 +30,7 @@ The ```PLATFORM_BOARD``` argument specifies which board you are using. The forma
 - If your board is already supported by *micro-ROS*, use the name shown in the [micro_ros_setup](https://github.com/micro-ROS/micro_ros_setup) supported platforms section.
 - If your board is not yet supported by *micro-ROS* (but supported by *Zephyr*) and you just want to try out this configuration, use the name used by *Zephyr* (as found in its board side in the [documentation](https://docs.zephyrproject.org/latest/boards/index.html)). This will give you warnings during your build.
 
-Running the image
+Running the Image
 -----------------
 
 You can use this image just like any other docker image. Recommended usage is
@@ -41,7 +50,7 @@ The effects of these flags are:
 Example Applications
 --------------------
 
-### Serial communication with real board
+### Serial Communication with Microcontroller Board
 
 Suppose you want to build one of the example applications distributed in [zephyr_apps](https://github.com/micro-ROS/zephyr_apps) as part of *micro-ROS*, for example *ping_pong*. You use the [STM32F429I-DISC1 discovery kit](https://docs.zephyrproject.org/latest/boards/arm/stm32f429i_disc1/doc/index.html).
 
@@ -95,7 +104,7 @@ $ ros2 topic pub -1 /microROS/ping std_msgs/msg/Header "frame_id: 'Hello World!'
 
 You should now see your message in the first shell.
 
-### UDP-based communication with host emulation
+### UDP-based Communication with Host Emulation
 
 Zephyr also allows you to build an application right on your computer, emulating some of the driver interfaces seamlessly (even complex peripherals like displays, network stacks and BLE). If you don't have access to a microcontroller board right now but still want to take a look at *micro-ROS*, i encourage getting started using this. It can also be incredibly useful for prototyping and debugging embedded applications. More information on this can be found in the [Zephyr documentation](https://docs.zephyrproject.org/latest/boards/posix/native_posix/doc/index.html).
 
