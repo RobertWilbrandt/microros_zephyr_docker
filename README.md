@@ -113,7 +113,8 @@ After this, start the container. Inside it, you can now configure and build an i
 ```console
 $ docker run -it --rm --net=host --volume $(pwd)/zephyr_apps/apps:/uros_apps \
     wilbrandt/microros_zephyr_stm32f429i_disc1:foxy
-# ros2 run micro_ros_setup configure_firmware.sh int32_publisher --transport udp --ip 127.0.0.1 --port 8888
+# ros2 run micro_ros_setup configure_firmware.sh int32_publisher \
+    --transport udp --ip 127.0.0.1 --port 8888
 # ros2 run micro_ros_setup build_firmware.sh -f
 ```
 
@@ -129,7 +130,7 @@ Now go back to your first container and start the application:
 # ros2 run micro_ros_setup flash_firmware.sh
 ```
 
-You should see some messages in the agent container. In a normal ros2 foxy machine, your can now check the functionality:
+You should see some messages in the agent container. In a normal ROS 2 foxy machine, your can now check the functionality:
 
 ```console
 $ source /opt/ros/foxy/setup.bash
