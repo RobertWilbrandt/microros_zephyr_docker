@@ -8,11 +8,11 @@ This package supplies a docker image with everything needed to start using [micr
 Table of Contents
 -----------------
 
-- [Building the Image](#building-the-image)
-- [Running the Image](#running-the-image)
-- [Example Applications](#example-applications)
-  - [Serial Communication with Microcontroller Board](#serial-communication-with-microcontroller-board)
-  - [UDP-based Communication with Host Emulation](#udp-based-communication-with-host-emulation)
+- [Building the Image](#building-the-image): How to build this docker image for your specific setup
+- [Running the Image](#running-the-image): How to run this image correctly
+- [Example Applications](#example-applications): Examples of real-world application
+  - [Serial Communication with Microcontroller Board](#serial-communication-with-microcontroller-board): Using this image to build an example for a microcontroller board, using serial communication
+  - [UDP-based Communication with Host Emulation](#udp-based-communication-with-host-emulation): Using this image to run a *micro-ROS* application in a host emulation, using udp communcation
 
 Building the Image
 ------------------
