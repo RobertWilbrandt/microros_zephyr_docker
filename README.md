@@ -3,6 +3,8 @@ microros_zephyr_docker
 
 This package supplies a docker image with everything needed to start using [micro-ROS](https://micro-ros.github.io/) with the [Zephyr RTOS](https://www.zephyrproject.org/).
 
+![Example of usage: Building this docker image, building an example application in it and running it](doc/usage_sample.gif)
+
 **Disclaimer**: This package is still under construction and not yet ready for any serious use.
 
 Table of Contents
