@@ -21,6 +21,8 @@ Table of Contents
 Building the Image
 ------------------
 
+Before using this image, you need to install docker on your system. If you don't have this already, take a look at the [docker installation instructions](https://docs.docker.com/engine/install).
+
 You can build the image using
 
 ```console
