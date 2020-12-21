@@ -90,7 +90,7 @@ You have now flashed your *micro-ROS* image to your board! When developing, you 
 An easy way to connect to your MCU is to use the *micro-ROS* ```micro-ros-agent``` docker image:
 
 ```console
-$ docker run -it --rm --privileged microros/micro-ros-agent:foxy serial --dev /dev/ttyACM0
+$ docker run -it --rm --net=host --privileged microros/micro-ros-agent:foxy serial --dev /dev/ttyACM0
 ```
 
 Make sure to replace the ```/dev/ttyACM0``` with your actual device. You might need to reset your microcontroller, for most development boards out there this should be possible by just pressing a button. The agent should show some lines notifying you about a new connection.
@@ -133,7 +133,7 @@ $ docker run -it --rm --net=host --volume $(pwd)/zephyr_apps/apps:/uros_apps \
 # ros2 run micro_ros_setup build_firmware.sh -f
 ```
 
-Note that we did not yet start the application (using ```flash_firmware.sh```), as this will just error out when it doesn't find an agent running. We can (again) start an agent in a seperate container, also changing the ```--privileged``` with ```--net=host```:
+Note that we did not yet start the application (using ```flash_firmware.sh```), as this will just error out when it doesn't find an agent running. We can (again) start an agent in a seperate container, and as this doesn't require any device access we don't need any ```--privileged``` flag for this to work:
 
 ```console
 $ docker run -it --rm --net=host microros/micro-ros-agent:foxy udp4 --port 8888
