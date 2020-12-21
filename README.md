@@ -90,7 +90,8 @@ You have now flashed your *micro-ROS* image to your board! When developing, you 
 An easy way to connect to your MCU is to use the *micro-ROS* ```micro-ros-agent``` docker image:
 
 ```console
-$ docker run -it --rm --net=host --privileged microros/micro-ros-agent:foxy serial --dev /dev/ttyACM0
+$ docker run -it --rm --net=host --privileged microros/micro-ros-agent:foxy \
+    serial --dev /dev/ttyACM0
 ```
 
 Make sure to replace the ```/dev/ttyACM0``` with your actual device. You might need to reset your microcontroller, for most development boards out there this should be possible by just pressing a button. The agent should show some lines notifying you about a new connection.
